@@ -45,6 +45,7 @@ public:
     Fem::FemAnalysis* getActiveObject() const;
     bool hasActiveObject() const;
     void highlightActiveObject(const Gui::HighlightMode&, bool);
+    void unsetActiveObject();
 
 private:
     ActiveAnalysisObserver();

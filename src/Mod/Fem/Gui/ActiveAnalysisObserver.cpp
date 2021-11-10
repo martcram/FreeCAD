@@ -80,6 +80,15 @@ void ActiveAnalysisObserver::highlightActiveObject(const Gui::HighlightMode& mod
         activeDocument->signalHighlightObject(*activeView, mode, on, 0, 0);
 }
 
+void ActiveAnalysisObserver::unsetActiveObject()
+{
+    if (this->hasActiveObject())
+    {
+        this->highlightActiveObject(Gui::HighlightMode::Blue, false);
+        this->setActiveObject(0);
+    }
+}
+
 void ActiveAnalysisObserver::slotDeletedDocument(const App::Document& Doc)
 {
     App::Document* d = getDocument();

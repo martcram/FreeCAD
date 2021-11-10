@@ -27,6 +27,7 @@
 # include <qobject.h>
 #endif
 
+#include "ActiveAnalysisObserver.h"
 #include "Workbench.h"
 #include <Gui/ToolBarManager.h>
 #include <Gui/MenuManager.h>
@@ -91,6 +92,12 @@ void Workbench::setupContextMenu(const char* recipient, Gui::MenuItem* item) con
         << "Separator"
         << "FEM_MeshClear"
         << "FEM_MeshDisplayInfo";
+}
+
+void Workbench::deactivated()
+{
+    FemGui::ActiveAnalysisObserver::instance()->unsetActiveObject();
+    Gui::Workbench::deactivated();
 }
 
 Gui::ToolBarItem* Workbench::setupToolBars() const
